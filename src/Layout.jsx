@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { createPageUrl } from "@/lib/utils";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export default function Layout({ children, currentPageName }) {
+// eslint-disable-next-line react/prop-types
+export default function Layout({ children }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
