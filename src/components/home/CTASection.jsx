@@ -1,32 +1,51 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
-import { base44 } from "@/api/base44Client";
 
 export default function CTASection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState("idle"); // idle | sending | sent
+  const [status, setStatus] = useState("idle"); // idle | sending | sent | error
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus("sending");
 
-    await base44.integrations.Core.SendEmail({
-      to: form.email,
-      subject: `New inquiry from ${form.name}`,
-      body: `Name: ${form.name}\nEmail: ${form.email}\nMessage: ${form.message}`,
-    });
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE",
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          subject: `New Contact from ${form.name} - Instracta`,
+          from_name: "Instracta Website",
+          to: "michaelouru2@gmail.com",
+        }),
+      });
 
-    base44.analytics.track({
-      eventName: "contact_form_submitted",
-      properties: { success: true },
-    });
+      const data = await response.json();
 
-    setStatus("sent");
-    setForm({ name: "", email: "", message: "" });
+      if (data.success) {
+        setStatus("sent");
+        setForm({ name: "", email: "", message: "" });
+        setTimeout(() => setStatus("idle"), 5000);
+      } else {
+        setStatus("error");
+        setTimeout(() => setStatus("idle"), 5000);
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
   };
 
   return (
@@ -45,7 +64,7 @@ export default function CTASection() {
             transition={{ duration: 0.7 }}
           >
             <span className="text-xs uppercase tracking-[0.25em] text-[#5AB3C6] font-semibold">
-              Let's Connect
+              Let&apos;s Connect
             </span>
             <h2 className="mt-4 text-4xl md:text-5xl font-bold text-gray-900 tracking-tight leading-tight">
               Ready to Transform
@@ -53,9 +72,9 @@ export default function CTASection() {
               Your Learning?
             </h2>
             <p className="mt-6 text-gray-500 text-lg font-light leading-relaxed">
-              Whether you're looking to modernize your training programs,
+              Whether you&apos;re looking to modernize your training programs,
               integrate AI into your learning strategy, or scale your team —
-              we're here to help.
+              we&apos;re here to help.
             </p>
 
             <div className="mt-10 space-y-4">
@@ -102,7 +121,7 @@ export default function CTASection() {
                     Message Sent!
                   </h3>
                   <p className="mt-2 text-gray-500 text-sm">
-                    We'll get back to you within 24 hours.
+                    We&apos;ll get back to you within 24 hours.
                   </p>
                   <Button
                     variant="outline"
@@ -110,6 +129,29 @@ export default function CTASection() {
                     onClick={() => setStatus("idle")}
                   >
                     Send Another
+                  </Button>
+                </motion.div>
+              ) : status === "error" ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="text-center py-12"
+                >
+                  <div className="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-5">
+                    <span className="text-2xl">⚠️</span>
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    Oops! Something went wrong
+                  </h3>
+                  <p className="mt-2 text-gray-500 text-sm">
+                    Please try again or email us directly at michaelouru2@gmail.com
+                  </p>
+                  <Button
+                    variant="outline"
+                    className="mt-6 rounded-full"
+                    onClick={() => setStatus("idle")}
+                  >
+                    Try Again
                   </Button>
                 </motion.div>
               ) : (

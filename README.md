@@ -66,72 +66,57 @@ src/
 ├── layouts/       # Layout components
 ├── hooks/         # Custom React hooks
 ├── context/       # React context providers
+├── api/           # API clients
 └── lib/           # Utility functions
 ```
+
+## Contact Form Setup
+
+The contact form sends emails to **michaelouru2@gmail.com** using Web3Forms (free service).
+
+### Quick Setup:
+
+1. Get your free access key from [https://web3forms.com/](https://web3forms.com/)
+2. Create a `.env` file in the project root:
+   ```env
+   VITE_WEB3FORMS_KEY=your_access_key_here
+   ```
+3. That's it! The form will now send real emails.
+
+For detailed instructions, see [CONTACT_FORM_SETUP.md](CONTACT_FORM_SETUP.md)
+
+**Note:** The form works without the key for local testing, but won't send real emails.
 
 ## Tech Stack
 
 - **React 18** - UI library
-- **Vite** - Build tool
-- **Tailwind CSS** - Styling
-- **Radix UI** - Headless UI components
-- **React Router** - Routing
-- **React Query** - Data fetching
+- **Vite 6** - Build tool and dev server
+- **Tailwind CSS 3** - Utility-first styling
+- **shadcn/ui** - Beautiful component library (49 components)
+- **Radix UI** - Headless UI primitives
+- **React Router 6** - Client-side routing
+- **React Query 5** - Server state management
 - **React Hook Form** - Form handling
 - **Zod** - Schema validation
-- **Framer Motion** - Animations
-- **Base44 SDK** - Base44 integration
+- **Framer Motion 11** - Animation library
+- **Lucide React** - Icon library
 
-## Next Steps
+## Path Aliases
 
-1. Copy your components from the Base44 project
-2. Copy your pages and layouts
-3. Update routing configuration
-4. Configure Base44 SDK settings
-5. Test and verify functionality
+- `@/` points to `src/` directory
+- Example: `import { Button } from "@/components/ui/button"`
 
-## Notes
+## Deployment
 
-- Path alias `@/` is configured to point to `src/`
-- Tailwind CSS variables are configured in `src/index.css`
-- ESLint and TypeScript checking are configured
+### Vercel (Recommended)
 
-### `npm run eject`
+1. Push to GitHub
+2. Import project in Vercel
+3. Add environment variable: `VITE_WEB3FORMS_KEY`
+4. Deploy!
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Vercel will auto-detect Vite and configure everything.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## License
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is private and proprietary.
