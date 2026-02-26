@@ -1,9 +1,13 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function HeroSection() {
+  const scrollToSection = (href) => {
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative min-h-screen pt-20 md:pt-24 flex items-center justify-center overflow-hidden bg-[#1A2B4A]">
       {/* Animated gradient orbs */}
@@ -80,6 +84,7 @@ export default function HeroSection() {
         >
           <Button
             size="lg"
+            onClick={() => scrollToSection("#contact")}
             className="bg-[#5AB3C6] hover:bg-[#4A9FB0] text-white px-8 py-6 text-base rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(90,179,198,0.4)] group"
           >
             Get Started
@@ -88,6 +93,7 @@ export default function HeroSection() {
           <Button
             variant="outline"
             size="lg"
+            onClick={() => scrollToSection("#additional-services")}
             className="border-white/15 text-white/80 hover:text-white hover:bg-white/5 px-8 py-6 text-base rounded-full bg-transparent"
           >
             Explore Services

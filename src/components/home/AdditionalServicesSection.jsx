@@ -68,7 +68,7 @@ const additionalServices = [
 
 export default function AdditionalServicesSection() {
   return (
-    <section className="relative py-32 bg-white overflow-hidden">
+    <section id="additional-services" className="relative py-32 bg-white overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#5AB3C6]/5 rounded-full blur-[150px]" />
 
       <div className="relative max-w-6xl mx-auto px-6">
