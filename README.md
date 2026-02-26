@@ -1,19 +1,51 @@
 # Instracta
 
-A React application migrated from Base44, built with Vite, React, and Tailwind CSS.
+**Trackable Learning Journeys** - A modern eLearning platform transforming static training into living learning ecosystems that drive performance and accountability.
+
+## About
+
+Instracta is a comprehensive eLearning solution offering:
+
+- 🎓 **Custom eLearning Development** - SCORM/xAPI-compliant course creation
+- 🎨 **Instructional Design** - Pedagogically sound learning experiences
+- 🤖 **AI-Powered Content Generation** - Automated content creation and enhancement
+- 🔗 **LMS Integration** - Seamless integration with major learning management systems
+- 📊 **Analytics & Tracking** - Comprehensive learner progress monitoring
+
+## Features
+
+- ✨ Modern, responsive UI built with React and Tailwind CSS
+- 🎯 49 pre-built UI components from shadcn/ui
+- 🚀 Lightning-fast development with Vite
+- 📱 Mobile-first responsive design
+- 🎭 Smooth animations with Framer Motion
+- 📧 Integrated contact form with email notifications
+- ♿ Accessible components built on Radix UI primitives
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v18 or higher recommended)
+- Node.js (v18 or higher)
 - npm or yarn
 
 ### Installation
 
-1. Install dependencies:
+1. Clone the repository:
+```bash
+git clone https://github.com/michaelouru-sw/instracta.git
+cd instracta
+```
+
+2. Install dependencies:
 ```bash
 npm install
+```
+
+3. Set up environment variables (optional):
+```bash
+cp .env.example .env
+# Edit .env with your configuration
 ```
 
 ### Development
@@ -37,7 +69,7 @@ Preview the production build:
 npm run preview
 ```
 
-### Linting
+### Code Quality
 
 Run ESLint:
 ```bash
@@ -49,8 +81,6 @@ Fix ESLint issues automatically:
 npm run lint:fix
 ```
 
-### Type Checking
-
 Run TypeScript type checking:
 ```bash
 npm run typecheck
@@ -59,64 +89,124 @@ npm run typecheck
 ## Project Structure
 
 ```
-src/
-├── components/     # Reusable components
-│   └── ui/        # UI components (shadcn/ui)
-├── pages/         # Page components
-├── layouts/       # Layout components
-├── hooks/         # Custom React hooks
-├── context/       # React context providers
-├── api/           # API clients
-└── lib/           # Utility functions
+instracta/
+├── public/             # Static assets
+├── src/
+│   ├── api/           # API client configurations
+│   ├── components/    # Reusable React components
+│   │   ├── home/     # Homepage sections
+│   │   └── ui/       # shadcn/ui components (49 components)
+│   ├── context/      # React context providers
+│   ├── hooks/        # Custom React hooks
+│   ├── layouts/      # Layout components
+│   ├── lib/          # Utility functions
+│   └── pages/        # Page components
+├── index.html        # Entry HTML
+├── vite.config.js    # Vite configuration
+└── tailwind.config.js # Tailwind CSS configuration
 ```
-
-## Contact Form Setup
-
-The contact form sends emails to **michaelouru2@gmail.com** using Web3Forms (free service).
-
-### Quick Setup:
-
-1. Get your free access key from [https://web3forms.com/](https://web3forms.com/)
-2. Create a `.env` file in the project root:
-   ```env
-   VITE_WEB3FORMS_KEY=your_access_key_here
-   ```
-3. That's it! The form will now send real emails.
-
-For detailed instructions, see [CONTACT_FORM_SETUP.md](CONTACT_FORM_SETUP.md)
-
-**Note:** The form works without the key for local testing, but won't send real emails.
 
 ## Tech Stack
 
-- **React 18** - UI library
-- **Vite 6** - Build tool and dev server
-- **Tailwind CSS 3** - Utility-first styling
-- **shadcn/ui** - Beautiful component library (49 components)
-- **Radix UI** - Headless UI primitives
-- **React Router 6** - Client-side routing
-- **React Query 5** - Server state management
-- **React Hook Form** - Form handling
-- **Zod** - Schema validation
-- **Framer Motion 11** - Animation library
-- **Lucide React** - Icon library
+### Core
+- **React 18.2** - Modern UI library with hooks
+- **Vite 6.1** - Next-generation frontend tooling
+- **JavaScript (ES2020+)** - Modern JavaScript features
+
+### Styling
+- **Tailwind CSS 3.4** - Utility-first CSS framework
+- **PostCSS** - CSS transformations
+- **Autoprefixer** - Vendor prefix automation
+
+### UI Components
+- **shadcn/ui** - High-quality component library (49 components included)
+- **Radix UI** - Unstyled, accessible component primitives
+- **Lucide React** - Beautiful & consistent icon set
+- **class-variance-authority** - Type-safe component variants
+- **tailwind-merge** - Intelligent Tailwind class merging
+
+### Routing & State
+- **React Router 6.26** - Declarative routing for React
+- **React Query 5.84** - Powerful data synchronization
+
+### Forms & Validation
+- **React Hook Form 7.54** - Performant form handling
+- **Zod 3.24** - TypeScript-first schema validation
+
+### Animations
+- **Framer Motion 11.16** - Production-ready motion library
+- **@hello-pangea/dnd 17** - Drag and drop interactions
+
+### Development Tools
+- **ESLint 9.19** - Code linting and quality
+- **TypeScript 5.9** - Type checking (via tsconfig/jsconfig)
+
+## Environment Variables
+
+The application uses environment variables for configuration. Create a `.env` file based on `.env.example`:
+
+```env
+# Contact Form (Web3Forms)
+VITE_WEB3FORMS_KEY=your_access_key_here
+```
+
+**Note:** All Vite environment variables must be prefixed with `VITE_` to be exposed to the client.
 
 ## Path Aliases
 
-- `@/` points to `src/` directory
-- Example: `import { Button } from "@/components/ui/button"`
+The project uses path aliases for cleaner imports:
+
+- `@/` → `src/`
+
+Example:
+```jsx
+import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+```
 
 ## Deployment
 
 ### Vercel (Recommended)
 
-1. Push to GitHub
-2. Import project in Vercel
-3. Add environment variable: `VITE_WEB3FORMS_KEY`
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/michaelouru-sw/instracta)
+
+1. Push your code to GitHub
+2. Import the project in [Vercel](https://vercel.com)
+3. Configure environment variables (see [Environment Variables](#environment-variables))
 4. Deploy!
 
-Vercel will auto-detect Vite and configure everything.
+Vercel automatically detects Vite projects and configures them correctly.
+
+### Other Platforms
+
+This project can be deployed to any static hosting platform that supports Node.js builds:
+
+- **Netlify** - Supports Vite out of the box
+- **Cloudflare Pages** - Fast global CDN
+- **AWS Amplify** - AWS-native hosting
+- **GitHub Pages** - Free hosting for public repos
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
 ## License
 
-This project is private and proprietary.
+© 2026 Instracta. All rights reserved.
+
+---
+
+**Built with ❤️ by the Instracta Team**
