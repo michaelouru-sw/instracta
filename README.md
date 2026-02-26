@@ -145,10 +145,6 @@ instracta/
 
 The application uses environment variables for configuration. Create a `.env` file based on `.env.example`:
 
-```env
-# Contact Form (Web3Forms)
-VITE_WEB3FORMS_KEY=your_access_key_here
-```
 
 **Note:** All Vite environment variables must be prefixed with `VITE_` to be exposed to the client.
 
