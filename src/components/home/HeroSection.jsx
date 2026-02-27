@@ -47,7 +47,7 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
             <Sparkles className="w-4 h-4 text-[#D4A574]" />
             <span className="text-sm text-white/70 tracking-wide">
-              The Future of Corporate Learning
+              The Future of eLearning
             </span>
           </div>
         </motion.div>
