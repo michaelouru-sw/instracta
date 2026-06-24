@@ -142,7 +142,7 @@ export default function Dashboard() {
             <Link to="/account" className="text-sm text-gray-500 hover:text-gray-900 px-2">
               {profile?.full_name || user.email}
             </Link>
-            <Button variant="ghost" size="icon" onClick={signOut} title="Logout">
+            <Button variant="ghost" size="icon" onClick={signOut} title="Logout" aria-label="Logout">
               <LogOut className="w-4 h-4" />
             </Button>
             <Link to="/new-course">

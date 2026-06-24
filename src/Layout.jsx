@@ -140,8 +140,10 @@ export default function Layout({ children }) {
 
           {/* Mobile hamburger */}
           <button
-            className="lg:hidden"
+            className="lg:hidden p-2 -m-2 min-w-[44px] min-h-[44px] flex items-center justify-center"
             onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? (
               <X className={scrolled ? "text-gray-900" : "text-white"} />

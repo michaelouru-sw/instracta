@@ -51,7 +51,7 @@ export default function OutlineSidebar({
     <aside className="w-72 shrink-0 border-r border-gray-100 bg-white h-full overflow-y-auto">
       <button
         onClick={onSelectHome}
-        className={`w-full flex items-center gap-2 px-4 py-3 text-sm font-medium border-b border-gray-100 ${
+        className={`w-full flex items-center gap-2 px-4 py-3 min-h-[44px] text-sm font-medium border-b border-gray-100 ${
           activeLessonId === null ? "bg-[#5AB3C6]/10 text-[#1A2B4A]" : "text-gray-600 hover:bg-gray-50"
         }`}
       >
@@ -72,7 +72,7 @@ export default function OutlineSidebar({
                       >
                         <button
                           onClick={() => toggle(mod.id)}
-                          className="flex items-center gap-1.5 text-sm font-semibold text-gray-700 flex-1 text-left"
+                          className="flex items-center gap-1.5 text-sm font-semibold text-gray-700 flex-1 text-left min-h-[40px] py-1"
                         >
                           {collapsed[mod.id] ? (
                             <ChevronRight className="w-3.5 h-3.5" />
@@ -83,9 +83,10 @@ export default function OutlineSidebar({
                         </button>
                         <button
                           onClick={() => onDeleteModule(mod.id)}
-                          className="opacity-0 group-hover:opacity-100 text-gray-300 hover:text-[#dc2626]"
+                          aria-label={`Delete module: ${mod.title}`}
+                          className="opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 focus-visible:opacity-100 p-2.5 -m-1 rounded-lg text-gray-300 hover:text-[#dc2626] hover:bg-[#dc2626]/5"
                         >
-                          <Trash2 className="w-3.5 h-3.5" />
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
 
@@ -118,9 +119,10 @@ export default function OutlineSidebar({
                                             e.stopPropagation();
                                             onDeleteLesson(mod.id, lesson.id);
                                           }}
-                                          className="opacity-0 group-hover:opacity-100 text-gray-300 hover:text-[#dc2626] shrink-0"
+                                          aria-label={`Delete lesson: ${lesson.title}`}
+                                          className="opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 focus-visible:opacity-100 p-2.5 -m-1 rounded-lg text-gray-300 hover:text-[#dc2626] hover:bg-[#dc2626]/5 shrink-0"
                                         >
-                                          <Trash2 className="w-3.5 h-3.5" />
+                                          <Trash2 className="w-4 h-4" />
                                         </button>
                                       </div>
                                     )}

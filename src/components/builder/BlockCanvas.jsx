@@ -112,7 +112,7 @@ function QuizBlockEditor({ block, onChange }) {
               title="Mark as correct answer"
             />
             <Input value={opt} onChange={(e) => updateOption(i, e.target.value)} className="flex-1" />
-            <button onClick={() => removeOption(i)} className="text-gray-400 hover:text-[#dc2626]">
+            <button onClick={() => removeOption(i)} aria-label="Remove" className="text-gray-400 hover:text-[#dc2626] p-1.5 -m-0.5 rounded-lg hover:bg-[#dc2626]/5">
               <X className="w-4 h-4" />
             </button>
           </div>
@@ -164,7 +164,7 @@ function ListItemsEditor({ block, onChange }) {
       {items.map((item, i) => (
         <div key={i} className="flex items-center gap-2">
           <Input value={item} onChange={(e) => updateItem(i, e.target.value)} className="flex-1" />
-          <button onClick={() => removeItem(i)} className="text-gray-400 hover:text-[#dc2626]">
+          <button onClick={() => removeItem(i)} aria-label="Remove" className="text-gray-400 hover:text-[#dc2626] p-1.5 -m-0.5 rounded-lg hover:bg-[#dc2626]/5">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -293,7 +293,7 @@ function TableBlockEditor({ block, onChange }) {
                 </td>
               ))}
               <td>
-                <button onClick={() => removeRow(r)} className="text-gray-400 hover:text-[#dc2626]">
+                <button onClick={() => removeRow(r)} aria-label="Remove" className="text-gray-400 hover:text-[#dc2626] p-1.5 -m-0.5 rounded-lg hover:bg-[#dc2626]/5">
                   <X className="w-3.5 h-3.5" />
                 </button>
               </td>
@@ -368,7 +368,7 @@ function MultiSelectBlockEditor({ block, onChange }) {
               title="Mark as a correct answer"
             />
             <Input value={opt} onChange={(e) => updateOption(i, e.target.value)} className="flex-1" />
-            <button onClick={() => removeOption(i)} className="text-gray-400 hover:text-[#dc2626]">
+            <button onClick={() => removeOption(i)} aria-label="Remove" className="text-gray-400 hover:text-[#dc2626] p-1.5 -m-0.5 rounded-lg hover:bg-[#dc2626]/5">
               <X className="w-4 h-4" />
             </button>
           </div>
@@ -425,6 +425,276 @@ function CodeBlockEditor({ block, onChange }) {
   );
 }
 
+// Shared by Accordion, Tabs, Process: a list of { title, body } entries.
+function TitledItemsEditor({ block, onChange, itemsKey = "items", titleField = "title", bodyField = "body" }) {
+  const items = block.content[itemsKey];
+  const update = (i, field, value) => {
+    const next = items.map((item, idx) => (idx === i ? { ...item, [field]: value } : item));
+    onChange({ ...block.content, [itemsKey]: next });
+  };
+  const add = () =>
+    onChange({
+      ...block.content,
+      [itemsKey]: [...items, { [titleField]: "New item", [bodyField]: "" }],
+    });
+  const remove = (i) =>
+    onChange({ ...block.content, [itemsKey]: items.filter((_, idx) => idx !== i) });
+
+  return (
+    <div className="space-y-3">
+      {items.map((item, i) => (
+        <div key={i} className="rounded-xl border border-gray-100 p-3 space-y-2">
+          <div className="flex items-center gap-2">
+            <Input
+              value={item[titleField]}
+              onChange={(e) => update(i, titleField, e.target.value)}
+              placeholder="Title"
+              className="flex-1"
+            />
+            <button onClick={() => remove(i)} aria-label="Remove" className="text-gray-400 hover:text-[#dc2626] p-1.5 -m-0.5 rounded-lg hover:bg-[#dc2626]/5">
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+          <Textarea
+            rows={2}
+            value={item[bodyField]}
+            onChange={(e) => update(i, bodyField, e.target.value)}
+            placeholder="Body text"
+          />
+        </div>
+      ))}
+      <Button variant="outline" size="sm" onClick={add} className="rounded-lg">
+        <Plus className="w-3.5 h-3.5 mr-1" /> Add item
+      </Button>
+    </div>
+  );
+}
+
+function FlashcardsBlockEditor({ block, onChange }) {
+  const { cards } = block.content;
+  const update = (i, field, value) => {
+    const next = cards.map((c, idx) => (idx === i ? { ...c, [field]: value } : c));
+    onChange({ ...block.content, cards: next });
+  };
+  const add = () => onChange({ ...block.content, cards: [...cards, { front: "Term", back: "Definition" }] });
+  const remove = (i) => onChange({ ...block.content, cards: cards.filter((_, idx) => idx !== i) });
+
+  return (
+    <div className="space-y-3">
+      {cards.map((card, i) => (
+        <div key={i} className="rounded-xl border border-gray-100 p-3 grid grid-cols-2 gap-2 items-start">
+          <Input value={card.front} onChange={(e) => update(i, "front", e.target.value)} placeholder="Front" />
+          <div className="flex items-center gap-2">
+            <Input value={card.back} onChange={(e) => update(i, "back", e.target.value)} placeholder="Back" className="flex-1" />
+            <button onClick={() => remove(i)} aria-label="Remove" className="text-gray-400 hover:text-[#dc2626] p-1.5 -m-0.5 rounded-lg hover:bg-[#dc2626]/5">
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      ))}
+      <Button variant="outline" size="sm" onClick={add} className="rounded-lg">
+        <Plus className="w-3.5 h-3.5 mr-1" /> Add card
+      </Button>
+    </div>
+  );
+}
+
+function LabeledGraphicBlockEditor({ block, onChange }) {
+  const { imageUrl, markers } = block.content;
+  const updateMarker = (i, field, value) => {
+    const next = markers.map((m, idx) => (idx === i ? { ...m, [field]: value } : m));
+    onChange({ ...block.content, markers: next });
+  };
+  const addMarker = () =>
+    onChange({ ...block.content, markers: [...markers, { x: 50, y: 50, label: "Hotspot", body: "" }] });
+  const removeMarker = (i) => onChange({ ...block.content, markers: markers.filter((_, idx) => idx !== i) });
+
+  return (
+    <div className="space-y-3">
+      <Input
+        placeholder="Image URL"
+        value={imageUrl}
+        onChange={(e) => onChange({ ...block.content, imageUrl: e.target.value })}
+      />
+      {imageUrl && <img src={imageUrl} alt="" className="rounded-lg max-h-48" />}
+      <p className="text-xs text-gray-400">Markers position as % of image width/height (0-100).</p>
+      {markers.map((m, i) => (
+        <div key={i} className="rounded-xl border border-gray-100 p-3 space-y-2">
+          <div className="grid grid-cols-2 gap-2">
+            <Input
+              type="number"
+              min={0}
+              max={100}
+              value={m.x}
+              onChange={(e) => updateMarker(i, "x", Number(e.target.value))}
+              placeholder="X %"
+            />
+            <Input
+              type="number"
+              min={0}
+              max={100}
+              value={m.y}
+              onChange={(e) => updateMarker(i, "y", Number(e.target.value))}
+              placeholder="Y %"
+            />
+          </div>
+          <Input value={m.label} onChange={(e) => updateMarker(i, "label", e.target.value)} placeholder="Label" />
+          <div className="flex items-center gap-2">
+            <Textarea
+              rows={2}
+              value={m.body}
+              onChange={(e) => updateMarker(i, "body", e.target.value)}
+              placeholder="Details shown when clicked"
+              className="flex-1"
+            />
+            <button onClick={() => removeMarker(i)} aria-label="Remove" className="text-gray-400 hover:text-[#dc2626] p-1.5 -m-0.5 rounded-lg hover:bg-[#dc2626]/5">
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      ))}
+      <Button variant="outline" size="sm" onClick={addMarker} className="rounded-lg">
+        <Plus className="w-3.5 h-3.5 mr-1" /> Add marker
+      </Button>
+    </div>
+  );
+}
+
+function MatchingBlockEditor({ block, onChange }) {
+  const { pairs } = block.content;
+  const update = (i, field, value) => {
+    const next = pairs.map((p, idx) => (idx === i ? { ...p, [field]: value } : p));
+    onChange({ ...block.content, pairs: next });
+  };
+  const add = () => onChange({ ...block.content, pairs: [...pairs, { left: "", right: "" }] });
+  const remove = (i) => onChange({ ...block.content, pairs: pairs.filter((_, idx) => idx !== i) });
+
+  return (
+    <div className="space-y-2">
+      {pairs.map((pair, i) => (
+        <div key={i} className="flex items-center gap-2">
+          <Input value={pair.left} onChange={(e) => update(i, "left", e.target.value)} placeholder="Left" className="flex-1" />
+          <span className="text-gray-300">↔</span>
+          <Input value={pair.right} onChange={(e) => update(i, "right", e.target.value)} placeholder="Right" className="flex-1" />
+          <button onClick={() => remove(i)} aria-label="Remove" className="text-gray-400 hover:text-[#dc2626] p-1.5 -m-0.5 rounded-lg hover:bg-[#dc2626]/5">
+            <X className="w-4 h-4" />
+          </button>
+        </div>
+      ))}
+      <Button variant="outline" size="sm" onClick={add} className="rounded-lg">
+        <Plus className="w-3.5 h-3.5 mr-1" /> Add pair
+      </Button>
+    </div>
+  );
+}
+
+function FillInBlankBlockEditor({ block, onChange }) {
+  return (
+    <div className="space-y-2">
+      <Textarea
+        rows={2}
+        value={block.content.template}
+        onChange={(e) => onChange({ ...block.content, template: e.target.value })}
+        placeholder="Use ___ to mark the blank"
+      />
+      <Input
+        value={block.content.answer}
+        onChange={(e) => onChange({ ...block.content, answer: e.target.value })}
+        placeholder="Correct answer"
+      />
+    </div>
+  );
+}
+
+function CategorizeBlockEditor({ block, onChange }) {
+  const { categories, items } = block.content;
+  const updateCategory = (i, value) => {
+    const next = [...categories];
+    next[i] = value;
+    onChange({ ...block.content, categories: next });
+  };
+  const addCategory = () => onChange({ ...block.content, categories: [...categories, `Category ${categories.length + 1}`] });
+  const updateItem = (i, field, value) => {
+    const next = items.map((item, idx) => (idx === i ? { ...item, [field]: value } : item));
+    onChange({ ...block.content, items: next });
+  };
+  const addItem = () => onChange({ ...block.content, items: [...items, { label: "New item", category: 0 }] });
+  const removeItem = (i) => onChange({ ...block.content, items: items.filter((_, idx) => idx !== i) });
+
+  return (
+    <div className="space-y-3">
+      <div>
+        <p className="text-xs text-gray-400 mb-2">Categories</p>
+        <div className="flex flex-wrap gap-2">
+          {categories.map((cat, i) => (
+            <Input key={i} value={cat} onChange={(e) => updateCategory(i, e.target.value)} className="w-36" />
+          ))}
+          <Button variant="outline" size="sm" onClick={addCategory} className="rounded-lg">
+            <Plus className="w-3.5 h-3.5" />
+          </Button>
+        </div>
+      </div>
+      <div>
+        <p className="text-xs text-gray-400 mb-2">Items</p>
+        <div className="space-y-2">
+          {items.map((item, i) => (
+            <div key={i} className="flex items-center gap-2">
+              <Input value={item.label} onChange={(e) => updateItem(i, "label", e.target.value)} className="flex-1" />
+              <select
+                value={item.category}
+                onChange={(e) => updateItem(i, "category", Number(e.target.value))}
+                className="h-10 rounded-lg border border-gray-200 bg-white px-2 text-sm"
+              >
+                {categories.map((cat, ci) => (
+                  <option key={ci} value={ci}>
+                    {cat}
+                  </option>
+                ))}
+              </select>
+              <button onClick={() => removeItem(i)} aria-label="Remove" className="text-gray-400 hover:text-[#dc2626] p-1.5 -m-0.5 rounded-lg hover:bg-[#dc2626]/5">
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+          ))}
+        </div>
+        <Button variant="outline" size="sm" onClick={addItem} className="rounded-lg mt-2">
+          <Plus className="w-3.5 h-3.5 mr-1" /> Add item
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+function GalleryBlockEditor({ block, onChange }) {
+  const { images } = block.content;
+  const update = (i, field, value) => {
+    const next = images.map((img, idx) => (idx === i ? { ...img, [field]: value } : img));
+    onChange({ ...block.content, images: next });
+  };
+  const add = () => onChange({ ...block.content, images: [...images, { url: "", caption: "" }] });
+  const remove = (i) => onChange({ ...block.content, images: images.filter((_, idx) => idx !== i) });
+
+  return (
+    <div className="space-y-3">
+      {images.map((img, i) => (
+        <div key={i} className="rounded-xl border border-gray-100 p-3 space-y-2">
+          <div className="flex items-center gap-2">
+            <Input value={img.url} onChange={(e) => update(i, "url", e.target.value)} placeholder="Image URL" className="flex-1" />
+            <button onClick={() => remove(i)} aria-label="Remove" className="text-gray-400 hover:text-[#dc2626] p-1.5 -m-0.5 rounded-lg hover:bg-[#dc2626]/5">
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+          {img.url && <img src={img.url} alt="" className="rounded-lg max-h-32" />}
+          <Input value={img.caption} onChange={(e) => update(i, "caption", e.target.value)} placeholder="Caption (optional)" />
+        </div>
+      ))}
+      <Button variant="outline" size="sm" onClick={add} className="rounded-lg">
+        <Plus className="w-3.5 h-3.5 mr-1" /> Add image
+      </Button>
+    </div>
+  );
+}
+
 const EDITORS = {
   text: TextBlockEditor,
   heading: HeadingBlockEditor,
@@ -443,6 +713,15 @@ const EDITORS = {
   "multi-select": MultiSelectBlockEditor,
   "true-false": TrueFalseBlockEditor,
   code: CodeBlockEditor,
+  flashcards: FlashcardsBlockEditor,
+  accordion: TitledItemsEditor,
+  tabs: TitledItemsEditor,
+  process: (props) => <TitledItemsEditor {...props} itemsKey="steps" />,
+  "labeled-graphic": LabeledGraphicBlockEditor,
+  matching: MatchingBlockEditor,
+  "fill-in-blank": FillInBlankBlockEditor,
+  categorize: CategorizeBlockEditor,
+  gallery: GalleryBlockEditor,
 };
 
 function BlockShell({ block, index, total, onChange, onDelete, onMove, dragHandleProps }) {
@@ -459,14 +738,28 @@ function BlockShell({ block, index, total, onChange, onDelete, onMove, dragHandl
           <def.icon className="w-3.5 h-3.5" />
           {def.label}
         </div>
-        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-          <button disabled={index === 0} onClick={() => onMove(-1)} className="p-1 text-gray-400 hover:text-gray-700 disabled:opacity-30">
+        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 focus-within:opacity-100 transition-opacity">
+          <button
+            disabled={index === 0}
+            onClick={() => onMove(-1)}
+            aria-label="Move block up"
+            className="p-2.5 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 disabled:opacity-30"
+          >
             <ChevronUp className="w-4 h-4" />
           </button>
-          <button disabled={index === total - 1} onClick={() => onMove(1)} className="p-1 text-gray-400 hover:text-gray-700 disabled:opacity-30">
+          <button
+            disabled={index === total - 1}
+            onClick={() => onMove(1)}
+            aria-label="Move block down"
+            className="p-2.5 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 disabled:opacity-30"
+          >
             <ChevronDown className="w-4 h-4" />
           </button>
-          <button onClick={onDelete} className="p-1 text-gray-400 hover:text-[#dc2626]">
+          <button
+            onClick={onDelete}
+            aria-label="Delete block"
+            className="p-2.5 rounded-lg text-gray-400 hover:text-[#dc2626] hover:bg-[#dc2626]/5"
+          >
             <Trash2 className="w-4 h-4" />
           </button>
         </div>

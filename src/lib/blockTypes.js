@@ -17,6 +17,15 @@ import {
   MousePointerClick,
   CheckSquare,
   ToggleLeft,
+  Layers,
+  ChevronsUpDown,
+  PanelsTopLeft,
+  GitCommitHorizontal,
+  MapPin,
+  Shuffle,
+  PenLine,
+  FolderKanban,
+  Images,
 } from "lucide-react";
 
 // Subset of the spec's 27 block types, prioritized by usage. Each entry
@@ -159,6 +168,108 @@ export const BLOCK_TYPES = [
     icon: Code,
     category: "Content",
     defaultContent: { code: "", language: "javascript" },
+  },
+  {
+    type: "flashcards",
+    label: "Flashcards",
+    icon: Layers,
+    category: "Interactive",
+    defaultContent: {
+      cards: [
+        { front: "Term", back: "Definition" },
+        { front: "Term 2", back: "Definition 2" },
+      ],
+    },
+  },
+  {
+    type: "accordion",
+    label: "Accordion",
+    icon: ChevronsUpDown,
+    category: "Interactive",
+    defaultContent: {
+      items: [
+        { title: "Section 1", body: "Details for section 1." },
+        { title: "Section 2", body: "Details for section 2." },
+      ],
+    },
+  },
+  {
+    type: "tabs",
+    label: "Tabs",
+    icon: PanelsTopLeft,
+    category: "Interactive",
+    defaultContent: {
+      items: [
+        { title: "Tab 1", body: "Content for tab 1." },
+        { title: "Tab 2", body: "Content for tab 2." },
+      ],
+    },
+  },
+  {
+    type: "process",
+    label: "Process / Steps",
+    icon: GitCommitHorizontal,
+    category: "Interactive",
+    defaultContent: {
+      steps: [
+        { title: "Step 1", body: "What happens first." },
+        { title: "Step 2", body: "What happens next." },
+      ],
+    },
+  },
+  {
+    type: "labeled-graphic",
+    label: "Labeled Graphic",
+    icon: MapPin,
+    category: "Interactive",
+    defaultContent: {
+      imageUrl: "",
+      markers: [{ x: 50, y: 50, label: "Hotspot 1", body: "Details about this point." }],
+    },
+  },
+  {
+    type: "matching",
+    label: "Matching",
+    icon: Shuffle,
+    category: "Assessment",
+    defaultContent: {
+      pairs: [
+        { left: "Term A", right: "Match A" },
+        { left: "Term B", right: "Match B" },
+      ],
+    },
+  },
+  {
+    type: "fill-in-blank",
+    label: "Fill in the Blank",
+    icon: PenLine,
+    category: "Assessment",
+    defaultContent: {
+      template: "The capital of France is ___.",
+      answer: "Paris",
+    },
+  },
+  {
+    type: "categorize",
+    label: "Categorize",
+    icon: FolderKanban,
+    category: "Assessment",
+    defaultContent: {
+      categories: ["Category A", "Category B"],
+      items: [
+        { label: "Item 1", category: 0 },
+        { label: "Item 2", category: 1 },
+      ],
+    },
+  },
+  {
+    type: "gallery",
+    label: "Gallery",
+    icon: Images,
+    category: "Media",
+    defaultContent: {
+      images: [{ url: "", caption: "" }],
+    },
   },
 ];
 
