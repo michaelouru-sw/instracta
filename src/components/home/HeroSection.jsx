@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
   const scrollToSection = (href) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -47,7 +49,7 @@ export default function HeroSection() {
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-white/10 bg-white/5 backdrop-blur-sm mb-8">
             <Sparkles className="w-4 h-4 text-[#D4A574]" />
             <span className="text-sm text-white/70 tracking-wide">
-              The Future of eLearning
+              AI Course Software & Expert eLearning Services
             </span>
           </div>
         </motion.div>
@@ -71,9 +73,9 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mt-8 text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed font-medium"
         >
-          We transform static training into living learning ecosystems
-          that drive performance, accountability, and lasting impact — 
-          built to endure for the next 50 years.
+          Build courses yourself with our AI-powered authoring platform, or let our
+          PMP®-certified instructional design team build them for you. Either way, you get
+          trackable learning that drives performance and lasts.
         </motion.p>
 
         <motion.div
@@ -84,19 +86,19 @@ export default function HeroSection() {
         >
           <Button
             size="lg"
-            onClick={() => scrollToSection("#contact")}
+            onClick={() => scrollToSection("#software")}
             className="bg-[#5AB3C6] hover:bg-[#4A9FB0] text-white px-8 py-6 text-base rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(90,179,198,0.4)] group"
           >
-            Get Started
+            See How It Works
             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>
           <Button
             variant="outline"
             size="lg"
-            onClick={() => scrollToSection("#additional-services")}
+            onClick={() => navigate("/signup")}
             className="border-white/15 text-white/80 hover:text-white hover:bg-white/5 px-8 py-6 text-base rounded-full bg-transparent"
           >
-            Explore Services
+            Start Building Free
           </Button>
         </motion.div>
 

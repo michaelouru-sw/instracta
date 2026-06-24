@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "@/lib/AuthContext";
 
 // eslint-disable-next-line react/prop-types
 export default function Layout({ children }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -14,19 +19,24 @@ export default function Layout({ children }) {
   }, []);
 
   const navLinks = [
+    { label: "Software", href: "#software" },
     { label: "Services", href: "#services" },
-    { label: "Projects", href: "#projects" },
-    { label: "Testimonials", href: "#testimonials" },
+    { label: "Pricing", href: "/pricing" },
     { label: "About", href: "#about" },
     { label: "Contact", href: "#contact" },
   ];
 
-  const scrollToSection = (href) => {
+  const goToLink = (href) => {
     setMobileOpen(false);
-    // For hash links, scroll to section
     if (href.startsWith("#")) {
+      if (location.pathname !== "/") {
+        navigate("/" + href);
+        return;
+      }
       const el = document.querySelector(href);
       if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate(href);
     }
   };
 
@@ -48,11 +58,11 @@ export default function Layout({ children }) {
       >
         <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <a
-            href="#"
+          <Link
+            to="/"
             className="flex items-center gap-3"
           >
-            <img 
+            <img
               src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698c583cd6b465700f40ad97/e89c8f1da_Copilot_20260203_095333-removebg-preview-removebg-preview-removebg-preview.png"
               alt="Instracta"
               className="h-10 w-auto"
@@ -64,14 +74,14 @@ export default function Layout({ children }) {
             >
               Instracta
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6 whitespace-nowrap">
             {navLinks.map((link) => (
               <button
                 key={link.label}
-                onClick={() => scrollToSection(link.href)}
+                onClick={() => goToLink(link.href)}
                 className={`text-sm font-medium transition-colors duration-300 ${
                   scrolled
                     ? "text-gray-500 hover:text-gray-900"
@@ -81,21 +91,56 @@ export default function Layout({ children }) {
                 {link.label}
               </button>
             ))}
-            <button
-              onClick={() => scrollToSection("#contact")}
-              className={`text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-300 ${
-                scrolled
-                  ? "bg-[#1A2B4A] text-white hover:bg-[#23385C]"
-                  : "bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm"
-              }`}
-            >
-              Get Started
-            </button>
+            {user ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  className={`text-sm font-medium transition-colors duration-300 ${
+                    scrolled ? "text-gray-500 hover:text-gray-900" : "text-white/60 hover:text-white"
+                  }`}
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={signOut}
+                  className={`text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-300 ${
+                    scrolled
+                      ? "bg-[#1A2B4A] text-white hover:bg-[#23385C]"
+                      : "bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm"
+                  }`}
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <>
+                <button
+                  onClick={() => goToLink("#contact")}
+                  className={`text-sm font-medium px-5 py-2.5 rounded-full border transition-all duration-300 ${
+                    scrolled
+                      ? "border-gray-200 text-gray-700 hover:border-gray-300"
+                      : "border-white/20 text-white/80 hover:bg-white/5"
+                  }`}
+                >
+                  Book a Call
+                </button>
+                <button
+                  onClick={() => navigate("/login")}
+                  className={`text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-300 ${
+                    scrolled
+                      ? "bg-[#1A2B4A] text-white hover:bg-[#23385C]"
+                      : "bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm"
+                  }`}
+                >
+                  Login
+                </button>
+              </>
+            )}
           </div>
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden"
+            className="lg:hidden"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? (
@@ -113,24 +158,56 @@ export default function Layout({ children }) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-b border-gray-100 overflow-hidden"
+              className="lg:hidden bg-white border-b border-gray-100 overflow-hidden"
             >
               <div className="px-6 py-4 space-y-3">
                 {navLinks.map((link) => (
                   <button
                     key={link.label}
-                    onClick={() => scrollToSection(link.href)}
+                    onClick={() => goToLink(link.href)}
                     className="block w-full text-left text-gray-700 text-sm font-medium py-2"
                   >
                     {link.label}
                   </button>
                 ))}
-                <button
-                  onClick={() => scrollToSection("#contact")}
-                  className="w-full bg-[#1A2B4A] text-white text-sm font-medium py-3 rounded-xl mt-2"
-                >
-                  Get Started
-                </button>
+                {user ? (
+                  <>
+                    <Link
+                      to="/dashboard"
+                      onClick={() => setMobileOpen(false)}
+                      className="block w-full text-left text-gray-700 text-sm font-medium py-2"
+                    >
+                      Dashboard
+                    </Link>
+                    <button
+                      onClick={() => {
+                        setMobileOpen(false);
+                        signOut();
+                      }}
+                      className="w-full bg-[#1A2B4A] text-white text-sm font-medium py-3 rounded-xl mt-2"
+                    >
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button
+                      onClick={() => goToLink("#contact")}
+                      className="w-full border border-gray-200 text-gray-700 text-sm font-medium py-3 rounded-xl mt-2"
+                    >
+                      Book a Call
+                    </button>
+                    <button
+                      onClick={() => {
+                        setMobileOpen(false);
+                        navigate("/login");
+                      }}
+                      className="w-full bg-[#1A2B4A] text-white text-sm font-medium py-3 rounded-xl mt-2"
+                    >
+                      Login
+                    </button>
+                  </>
+                )}
               </div>
             </motion.div>
           )}
@@ -159,13 +236,37 @@ export default function Layout({ children }) {
                 </span>
               </div>
               <p className="text-white/35 text-sm leading-relaxed max-w-sm">
-                Trackable Learning Journeys. Transforming static training into
-                living learning ecosystems that drive performance and
-                accountability.
+                Trackable Learning Journeys. An AI-powered course-authoring platform and an
+                expert eLearning consultancy — build it yourself, or let our team build it
+                for you.
               </p>
             </div>
 
-            {/* Links */}
+            {/* Software */}
+            <div>
+              <h4 className="text-xs uppercase tracking-[0.2em] text-white/25 font-semibold mb-5">
+                Software
+              </h4>
+              <ul className="space-y-3">
+                <li>
+                  <Link to="/pricing" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+                    Pricing
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/signup" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+                    Start Free
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/login" className="text-sm text-white/40 hover:text-white/70 transition-colors">
+                    Log In
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Services */}
             <div>
               <h4 className="text-xs uppercase tracking-[0.2em] text-white/25 font-semibold mb-5">
                 Services
@@ -174,31 +275,35 @@ export default function Layout({ children }) {
                 {[
                   "Custom eLearning",
                   "Instructional Design",
-                  "AI Generation",
-                  "LMS Integration",
+                  "LMS Consulting",
+                  "Training of Trainers",
                 ].map((item) => (
                   <li key={item}>
-                    <span className="text-sm text-white/40 hover:text-white/70 transition-colors cursor-pointer">
+                    <button
+                      onClick={() => goToLink("#services")}
+                      className="text-sm text-white/40 hover:text-white/70 transition-colors text-left"
+                    >
                       {item}
-                    </span>
+                    </button>
                   </li>
                 ))}
               </ul>
             </div>
+          </div>
 
-            <div>
-              <h4 className="text-xs uppercase tracking-[0.2em] text-white/25 font-semibold mb-5">
-                Company
-              </h4>
-              <ul className="space-y-3">
-                {["About Us", "Careers", "Blog", "Contact"].map((item) => (
-                  <li key={item}>
-                    <span className="text-sm text-white/40 hover:text-white/70 transition-colors cursor-pointer">
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+          <div className="mt-12 pt-8 border-t border-white/5">
+            <h4 className="text-xs uppercase tracking-[0.2em] text-white/25 font-semibold mb-5">
+              Company
+            </h4>
+            <div className="flex flex-wrap gap-x-8 gap-y-3">
+              {["About Us", "Careers", "Blog", "Contact"].map((item) => (
+                <span
+                  key={item}
+                  className="text-sm text-white/40 hover:text-white/70 transition-colors cursor-pointer"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
 
