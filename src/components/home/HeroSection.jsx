@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
   const scrollToSection = (href) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -84,7 +86,7 @@ export default function HeroSection() {
         >
           <Button
             size="lg"
-            onClick={() => scrollToSection("#contact")}
+            onClick={() => navigate("/signup")}
             className="bg-[#5AB3C6] hover:bg-[#4A9FB0] text-white px-8 py-6 text-base rounded-full transition-all duration-300 hover:shadow-[0_0_30px_rgba(90,179,198,0.4)] group"
           >
             Get Started

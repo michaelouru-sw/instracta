@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "@/lib/AuthContext";
 
 // eslint-disable-next-line react/prop-types
 export default function Layout({ children }) {
@@ -9,6 +10,7 @@ export default function Layout({ children }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const { user, signOut } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -90,16 +92,39 @@ export default function Layout({ children }) {
                 {link.label}
               </button>
             ))}
-            <button
-              onClick={() => goToLink("#contact")}
-              className={`text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-300 ${
-                scrolled
-                  ? "bg-[#1A2B4A] text-white hover:bg-[#23385C]"
-                  : "bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm"
-              }`}
-            >
-              Get Started
-            </button>
+            {user ? (
+              <>
+                <Link
+                  to="/dashboard"
+                  className={`text-sm font-medium transition-colors duration-300 ${
+                    scrolled ? "text-gray-500 hover:text-gray-900" : "text-white/60 hover:text-white"
+                  }`}
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={signOut}
+                  className={`text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-300 ${
+                    scrolled
+                      ? "bg-[#1A2B4A] text-white hover:bg-[#23385C]"
+                      : "bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm"
+                  }`}
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <button
+                onClick={() => navigate("/signup")}
+                className={`text-sm font-medium px-5 py-2.5 rounded-full transition-all duration-300 ${
+                  scrolled
+                    ? "bg-[#1A2B4A] text-white hover:bg-[#23385C]"
+                    : "bg-white/10 text-white border border-white/20 hover:bg-white/20 backdrop-blur-sm"
+                }`}
+              >
+                Start Free
+              </button>
+            )}
           </div>
 
           {/* Mobile hamburger */}
@@ -134,12 +159,36 @@ export default function Layout({ children }) {
                     {link.label}
                   </button>
                 ))}
-                <button
-                  onClick={() => goToLink("#contact")}
-                  className="w-full bg-[#1A2B4A] text-white text-sm font-medium py-3 rounded-xl mt-2"
-                >
-                  Get Started
-                </button>
+                {user ? (
+                  <>
+                    <Link
+                      to="/dashboard"
+                      onClick={() => setMobileOpen(false)}
+                      className="block w-full text-left text-gray-700 text-sm font-medium py-2"
+                    >
+                      Dashboard
+                    </Link>
+                    <button
+                      onClick={() => {
+                        setMobileOpen(false);
+                        signOut();
+                      }}
+                      className="w-full bg-[#1A2B4A] text-white text-sm font-medium py-3 rounded-xl mt-2"
+                    >
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setMobileOpen(false);
+                      navigate("/signup");
+                    }}
+                    className="w-full bg-[#1A2B4A] text-white text-sm font-medium py-3 rounded-xl mt-2"
+                  >
+                    Start Free
+                  </button>
+                )}
               </div>
             </motion.div>
           )}
