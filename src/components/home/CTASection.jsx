@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -98,6 +99,13 @@ export default function CTASection() {
                 </motion.div>
               ))}
             </div>
+
+            <p className="mt-8 text-sm text-gray-400">
+              Prefer to build it yourself?{" "}
+              <Link to="/signup" className="text-[#1A2B4A] font-medium hover:underline">
+                Start free with our AI course builder →
+              </Link>
+            </p>
           </motion.div>
 
           {/* Right: Form */}

@@ -1,5 +1,6 @@
 import React from "react";
 import HeroSection from "@/components/home/HeroSection";
+import DualPathSection from "@/components/home/DualPathSection";
 import ServicesSection from "@/components/home/ServicesSection";
 import CaseStudiesSection from "@/components/home/CaseStudiesSection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
@@ -12,6 +13,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <HeroSection />
+      <DualPathSection />
       <ServicesSection />
       <CaseStudiesSection />
       <StatsSection />

@@ -390,6 +390,14 @@ export default function Pricing() {
             <ShieldCheck className="w-5 h-5 text-[#16a34a]" />
             30-day money-back guarantee on Pro plans
           </div>
+
+          {/* Consulting escape hatch */}
+          <div className="mt-6 text-center text-sm text-gray-400">
+            Need a fully custom, done-for-you solution instead of self-serve software?{" "}
+            <a href="/#contact" className="text-[#1A2B4A] font-medium hover:underline">
+              Talk to our consulting team →
+            </a>
+          </div>
         </div>
       </section>
 
