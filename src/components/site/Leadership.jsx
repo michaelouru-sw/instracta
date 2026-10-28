@@ -11,6 +11,12 @@ const PEOPLE = [
     photo: "/team/kenneth-riany.jpg",
     bio: "Advises the board and oversees governance, including the policies on our For funders page.",
   },
+  {
+    name: "Daisy Chepkoech",
+    role: "Programme Lead, Instracta Reach",
+    photo: "/team/daisy-chepkoech.jpg",
+    bio: "Leads delivery of Instracta Reach, working with partner institutions and sponsors.",
+  },
 ];
 
 export default function Leadership() {
@@ -18,7 +24,7 @@ export default function Leadership() {
     <section aria-labelledby="leadership-h" className="mt-20">
       <span className="text-xs uppercase tracking-[0.2em] text-[#5AB3C6] font-semibold">Instracta Leadership</span>
       <h2 id="leadership-h" className="mt-3 text-3xl font-bold tracking-tight text-[#1A2B4A]">The people behind the work.</h2>
-      <div className="mt-10 grid sm:grid-cols-2 gap-8 max-w-3xl">
+      <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl">
         {PEOPLE.map((p) => (
           <figure key={p.name} className="m-0">
             <img src={p.photo} alt={`${p.name}, ${p.role}`} width="640" height="800" loading="lazy" className="w-full aspect-[4/5] object-cover rounded-2xl bg-gray-100" />
@@ -30,7 +36,6 @@ export default function Leadership() {
           </figure>
         ))}
       </div>
-      <p className="mt-8 text-sm text-gray-600">Programme lead, Instracta Reach: <span className="font-medium text-[#1A2B4A]">Daisy Chepkoech</span></p>
     </section>
   );
 }
