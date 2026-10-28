@@ -13,7 +13,7 @@ export default function Products() {
           A ready-to-use learning management system for schools, colleges and training providers. Built on Moodle, set up with Instracta Theme, and supported by our team. Courses made in Instracta Builder load straight in.
         </Item>
         <Item title="Instracta Retain" chip="In development">Flags students at risk of dropping out, inside Moodle. Shows staff who needs support early, so they can reach out in time.</Item>
-        <Item title="Instracta Theme" chip="Open source">A clean, accessible theme for Moodle 5. Free to use and adapt.</Item>
+        <Item title="Instracta Theme" chip="Open source" actions={<Btn href="https://github.com/michaelouru-sw/instracta_moodle_theme" ghost>Download free on GitHub</Btn>}>A clean, accessible theme for Moodle 5. Free to use and adapt.</Item>
         <Item title="Instracta Nudge" chip="Moodle plugin · In development">Sends timely, friendly reminders to learners who are falling behind, based on activity in the course.</Item>
         <Item title="Instracta Audit" chip="Moodle plugin">A dashboard that checks courses against a quality checklist, so gaps are found and fixed before learners see them.</Item>
         <Item title="Instracta Marks" chip="Moodle plugin">Lets students report missing marks and lets staff track each case to a result.</Item>

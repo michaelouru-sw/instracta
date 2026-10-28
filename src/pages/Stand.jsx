@@ -1,4 +1,5 @@
 import { Page, PageHead, Three } from "@/components/site/parts";
+import Leadership from "@/components/site/Leadership";
 
 export default function Stand() {
   return (
@@ -9,7 +10,7 @@ export default function Stand() {
         ["Evidence", "We measure what changes and share it. We report actual results, including where we fall short, and plan independent evaluation of our programmes."],
         ["Local", "Built in Kenya, with local partners, for African learners. Our team is based in Nairobi, and we design with the people who will use the learning."],
       ]} />
-      <p className="mt-16 text-gray-500 max-w-md">Instracta is led by Michael Ouru, a learning engineer in Nairobi.</p>
+      <Leadership />
     </Page>
   );
 }
