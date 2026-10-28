@@ -68,6 +68,7 @@ export default function Funders() {
       <KV rows={[
         ["Founder and CEO", "Michael Ouru, Nairobi. Learning engineer and LMS lead."],
         ["Adviser and board lead", "Dr. Kenneth Goga Riany"],
+        ["Programme lead, Reach", "Daisy Chepkoech"],
         ["Advisory board", "A Kenyan advisory board will be appointed before the pilot."],
         ["Independent evaluator", "To be appointed before the pilot starts."],
       ]} />

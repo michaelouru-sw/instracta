@@ -30,6 +30,7 @@ export default function Leadership() {
           </figure>
         ))}
       </div>
+      <p className="mt-8 text-sm text-gray-600">Programme lead, Instracta Reach: <span className="font-medium text-[#1A2B4A]">Daisy Chepkoech</span></p>
     </section>
   );
 }
