@@ -14,6 +14,9 @@ export default function Products() {
         </Item>
         <Item title="Instracta Retain" chip="In development">Flags students at risk of dropping out, inside Moodle. Shows staff who needs support early, so they can reach out in time.</Item>
         <Item title="Instracta Theme" chip="Open source" actions={<Btn href="https://github.com/michaelouru-sw/instracta_moodle_theme" ghost>Download free on GitHub</Btn>}>A clean, accessible theme for Moodle 5. Free to use and adapt.</Item>
+        <Item title="Instracta Access" chip="Moodle plugin · Planned" actions={<Btn to="/contact" ghost>Ask about Access</Btn>}>
+          Accessibility for every learner in Moodle. A toolbar for text size, spacing, contrast and dyslexia-friendly fonts. Voice navigation and screen-reader support. Captions and transcripts for media. A checker that flags accessibility gaps in courses before they go live.
+        </Item>
         <Item title="Instracta Nudge" chip="Moodle plugin · In development">Sends timely, friendly reminders to learners who are falling behind, based on activity in the course.</Item>
         <Item title="Instracta Audit" chip="Moodle plugin">A dashboard that checks courses against a quality checklist, so gaps are found and fixed before learners see them.</Item>
         <Item title="Instracta Marks" chip="Moodle plugin">Lets students report missing marks and lets staff track each case to a result.</Item>
