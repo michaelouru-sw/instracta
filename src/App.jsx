@@ -5,6 +5,12 @@ import { AuthProvider } from '@/lib/AuthContext'
 import ProtectedRoute from '@/components/ProtectedRoute'
 import Home from '@/pages/Home'
 import Pricing from '@/pages/Pricing'
+import Stand from '@/pages/Stand'
+import Initiatives from '@/pages/Initiatives'
+import Products from '@/pages/Products'
+import Work from '@/pages/Work'
+import Funders from '@/pages/Funders'
+import Contact from '@/pages/Contact'
 import Login from '@/pages/Login'
 import Signup from '@/pages/Signup'
 import AuthCallback from '@/pages/AuthCallback'
@@ -28,6 +34,12 @@ function App() {
           <Routes>
             <Route path="/" element={<MarketingPage><Home /></MarketingPage>} />
             <Route path="/pricing" element={<MarketingPage><Pricing /></MarketingPage>} />
+            <Route path="/stand" element={<MarketingPage><Stand /></MarketingPage>} />
+            <Route path="/initiatives" element={<MarketingPage><Initiatives /></MarketingPage>} />
+            <Route path="/products" element={<MarketingPage><Products /></MarketingPage>} />
+            <Route path="/work" element={<MarketingPage><Work /></MarketingPage>} />
+            <Route path="/funders" element={<MarketingPage><Funders /></MarketingPage>} />
+            <Route path="/contact" element={<MarketingPage><Contact /></MarketingPage>} />
 
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />

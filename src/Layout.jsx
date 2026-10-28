@@ -6,7 +6,9 @@ import { useAuth } from "@/lib/AuthContext";
 
 // eslint-disable-next-line react/prop-types
 export default function Layout({ children }) {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolledState, setScrolled] = useState(false);
+  const scrolled = true; // pages are light; keep the nav solid
+  void scrolledState;
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,11 +21,12 @@ export default function Layout({ children }) {
   }, []);
 
   const navLinks = [
-    { label: "Software", href: "#software" },
-    { label: "Services", href: "#services" },
+    { label: "What we stand for", href: "/stand" },
+    { label: "Initiatives", href: "/initiatives" },
+    { label: "Products", href: "/products" },
+    { label: "Work with us", href: "/work" },
+    { label: "For funders", href: "/funders" },
     { label: "Pricing", href: "/pricing" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
   ];
 
   const goToLink = (href) => {
@@ -63,7 +66,7 @@ export default function Layout({ children }) {
             className="flex items-center gap-3"
           >
             <img
-              src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698c583cd6b465700f40ad97/e89c8f1da_Copilot_20260203_095333-removebg-preview-removebg-preview-removebg-preview.png"
+              src="/instracta-logo.png"
               alt="Instracta"
               className="h-10 w-auto"
             />
@@ -77,7 +80,7 @@ export default function Layout({ children }) {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-6 whitespace-nowrap">
+          <div className="hidden lg:flex items-center gap-5 whitespace-nowrap">
             {navLinks.map((link) => (
               <button
                 key={link.label}
@@ -115,14 +118,14 @@ export default function Layout({ children }) {
             ) : (
               <>
                 <button
-                  onClick={() => goToLink("#contact")}
+                  onClick={() => goToLink("/contact")}
                   className={`text-sm font-medium px-5 py-2.5 rounded-full border transition-all duration-300 ${
                     scrolled
                       ? "border-gray-200 text-gray-700 hover:border-gray-300"
                       : "border-white/20 text-white/80 hover:bg-white/5"
                   }`}
                 >
-                  Book a Call
+                  Contact
                 </button>
                 <button
                   onClick={() => navigate("/login")}
@@ -140,7 +143,7 @@ export default function Layout({ children }) {
 
           {/* Mobile hamburger */}
           <button
-            className="lg:hidden"
+            className="lg:hidden" aria-label="Menu"
             onClick={() => setMobileOpen(!mobileOpen)}
           >
             {mobileOpen ? (
@@ -192,10 +195,10 @@ export default function Layout({ children }) {
                 ) : (
                   <>
                     <button
-                      onClick={() => goToLink("#contact")}
+                      onClick={() => goToLink("/contact")}
                       className="w-full border border-gray-200 text-gray-700 text-sm font-medium py-3 rounded-xl mt-2"
                     >
-                      Book a Call
+                      Contact
                     </button>
                     <button
                       onClick={() => {
@@ -218,110 +221,42 @@ export default function Layout({ children }) {
       <main>{children}</main>
 
       {/* Footer */}
-      <footer className="bg-[#1A2B4A] border-t border-white/5">
-        <div className="max-w-6xl mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-4 gap-10">
-            {/* Brand */}
-            <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="bg-white/10 rounded-lg px-2 py-1">
-                  <img 
-                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698c583cd6b465700f40ad97/e89c8f1da_Copilot_20260203_095333-removebg-preview-removebg-preview-removebg-preview.png"
-                    alt="Instracta"
-                    className="h-9 w-auto"
-                  />
-                </div>
-                <span className="text-lg font-bold text-white tracking-tight">
-                  Instracta
+      <footer className="bg-[#1A2B4A]">
+        <div className="max-w-6xl mx-auto px-6 py-14">
+          <div className="grid md:grid-cols-[2fr_1fr_1fr] gap-10">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <span className="bg-white rounded-lg px-2 py-1.5">
+                  <img src="/instracta-logo.png" alt="Instracta" className="h-8 w-auto" />
                 </span>
+                <span className="text-lg font-bold text-white tracking-tight">Instracta</span>
               </div>
-              <p className="text-white/35 text-sm leading-relaxed max-w-sm">
-                Trackable Learning Journeys. An AI-powered course-authoring platform and an
-                expert eLearning consultancy — build it yourself, or let our team build it
-                for you.
+              <p className="text-white/60 text-sm leading-relaxed max-w-sm">
+                Learning programmes and tools that track what changes. Nairobi, Kenya.
+              </p>
+              <p className="mt-4 text-white/40 text-xs leading-relaxed">
+                Instracta eLearning Solutions · Business name BN-6ASR3RYZ<br />
+                Eagle House, Ndemi Road, Kilimani, Nairobi
               </p>
             </div>
-
-            {/* Software */}
             <div>
-              <h4 className="text-xs uppercase tracking-[0.2em] text-white/25 font-semibold mb-5">
-                Software
-              </h4>
-              <ul className="space-y-3">
-                <li>
-                  <Link to="/pricing" className="text-sm text-white/40 hover:text-white/70 transition-colors">
-                    Pricing
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/signup" className="text-sm text-white/40 hover:text-white/70 transition-colors">
-                    Start Free
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/login" className="text-sm text-white/40 hover:text-white/70 transition-colors">
-                    Log In
-                  </Link>
-                </li>
+              <h4 className="text-xs uppercase tracking-[0.2em] text-white/40 font-semibold mb-4">Explore</h4>
+              <ul className="space-y-2.5 text-sm">
+                {[["What we stand for", "/stand"], ["Initiatives", "/initiatives"], ["Products", "/products"], ["Work with us", "/work"], ["For funders", "/funders"], ["Contact", "/contact"]].map(([l, h]) => (
+                  <li key={h}><Link to={h} className="text-white/60 hover:text-white">{l}</Link></li>
+                ))}
               </ul>
             </div>
-
-            {/* Services */}
             <div>
-              <h4 className="text-xs uppercase tracking-[0.2em] text-white/25 font-semibold mb-5">
-                Services
-              </h4>
-              <ul className="space-y-3">
-                {[
-                  "Custom eLearning",
-                  "Instructional Design",
-                  "LMS Consulting",
-                  "Training of Trainers",
-                ].map((item) => (
-                  <li key={item}>
-                    <button
-                      onClick={() => goToLink("#services")}
-                      className="text-sm text-white/40 hover:text-white/70 transition-colors text-left"
-                    >
-                      {item}
-                    </button>
-                  </li>
+              <h4 className="text-xs uppercase tracking-[0.2em] text-white/40 font-semibold mb-4">Instracta Builder</h4>
+              <ul className="space-y-2.5 text-sm">
+                {[["Pricing", "/pricing"], ["Start free", "/signup"], ["Log in", "/login"]].map(([l, h]) => (
+                  <li key={h}><Link to={h} className="text-white/60 hover:text-white">{l}</Link></li>
                 ))}
               </ul>
             </div>
           </div>
-
-          <div className="mt-12 pt-8 border-t border-white/5">
-            <h4 className="text-xs uppercase tracking-[0.2em] text-white/25 font-semibold mb-5">
-              Company
-            </h4>
-            <div className="flex flex-wrap gap-x-8 gap-y-3">
-              {["About Us", "Careers", "Blog", "Contact"].map((item) => (
-                <span
-                  key={item}
-                  className="text-sm text-white/40 hover:text-white/70 transition-colors cursor-pointer"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-white/20">
-              © 2026 Instracta. All rights reserved.
-            </p>
-            <div className="flex items-center gap-6">
-              {["Privacy Policy", "Terms of Service"].map((item) => (
-                <span
-                  key={item}
-                  className="text-xs text-white/20 hover:text-white/40 transition-colors cursor-pointer"
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
+          <div className="mt-12 pt-6 border-t border-white/10 text-xs text-white/40">© 2026 Instracta. All rights reserved.</div>
         </div>
       </footer>
     </div>
