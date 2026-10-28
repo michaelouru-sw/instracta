@@ -22,19 +22,19 @@ export default function Home() {
           </div>
         </div>
         <figure className="relative m-0">
-          <img src="/img/learner-standing.jpg" alt="A learner standing beside computers in a training room" width="1600" height="1247" className="w-full aspect-[4/3] object-cover rounded-3xl" />
+          <img src="/img/hero-team.jpg" alt="Three people looking together at a laptop and smiling" width="1600" height="1067" className="w-full aspect-[4/3] object-cover rounded-3xl" />
           <span className="absolute left-4 bottom-4 bg-white rounded-xl px-2.5 py-2 shadow-md">
             <img src="/instracta-logo.png" alt="Instracta" className="h-7 w-auto" />
           </span>
         </figure>
       </div>
-      <div className="mt-6 grid grid-cols-3 gap-3 md:gap-5">
+      <div className="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-5">
         {[
-          ["/img/group.jpg", "Learners and a facilitator in a shared workspace"],
-          ["/img/peer-learning.jpg", "Two learners working together at a laptop"],
-          ["/img/hands-on.jpg", "A learner practising on a laptop in a community venue"],
-        ].map(([src, alt]) => (
-          <img key={src} src={src} alt={alt} loading="lazy" width="1066" height="1600" className="w-full aspect-[4/5] object-cover rounded-2xl" />
+          ["/img/facilitator.jpg", "A facilitator speaking with learners at a shared desk", "20% center"],
+          ["/img/collaboration.jpg", "Three colleagues working through a task on a laptop", "50% center"],
+          ["/img/interview.jpg", "A woman in conversation across a desk with a laptop open", "45% center"],
+        ].map(([src, alt, pos]) => (
+          <img key={src} src={src} alt={alt} loading="lazy" width="1600" height="1067" style={{ objectPosition: pos }} className="w-full aspect-[4/3] object-cover rounded-2xl" />
         ))}
       </div>
       <div className="mt-20 grid md:grid-cols-3 gap-6">
