@@ -66,7 +66,7 @@ export default function Funders() {
       ]} />
       <H>People</H>
       <KV rows={[
-        ["Founder", "Michael Ouru, Nairobi. Learning engineer and LMS lead."],
+        ["Founder and CEO", "Michael Ouru, Nairobi. Learning engineer and LMS lead."],
         ["Adviser and board lead", "Dr. Kenneth Goga Riany"],
         ["Advisory board", "A Kenyan advisory board will be appointed before the pilot."],
         ["Independent evaluator", "To be appointed before the pilot starts."],
