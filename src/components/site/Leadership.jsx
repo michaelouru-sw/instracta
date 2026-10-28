@@ -1,7 +1,7 @@
 const PEOPLE = [
   {
     name: "Michael Ouru",
-    role: "Founder",
+    role: "Founder and CEO",
     photo: "/team/michael-ouru.jpg",
     bio: "Learning engineer and LMS lead based in Nairobi. Leads Instracta's products and programmes.",
   },
