@@ -81,7 +81,7 @@ export const s2 = [
         h: "7.2 Open licensing and the cost of ownership",
         p: [
           "Open licensing changes the economics of access by removing the licence fee and by letting institutions host, adapt and share content. The UNESCO Recommendation on Open Educational Resources, adopted unanimously by the 193 member states in November 2019, encourages the creation, adaptation and sharing of openly licensed educational materials (UNESCO, 2019). The Digital Public Goods Standard lists open licensing, clear ownership, platform independence, documentation, a mechanism for extracting data and adherence to privacy laws among its baseline indicators (Digital Public Goods Alliance, n.d.). These instruments do not remove the cost of maintenance, hosting or support, and open materials can be neglected. They do reduce the structural cost of access and the risk that an institution is locked into a vendor.",
-          "The Global Education Monitoring Report of 2023 recommends that governments pilot technology in ways that reflect total cost of ownership and establish transparency in spending and contracts with private companies (UNESCO, 2023). A provider that publishes the full cost per learner, including data, devices and facilitation, and the share of learners reached on sponsored terms, makes it possible for funders to compare access models on a common basis. Few do so, and the evidence on the cost per completing learner in Kenya is, to the author's knowledge, sparse.",
+          "The Global Education Monitoring Report of 2023 recommends that governments pilot technology in ways that reflect total cost of ownership and establish transparency in spending and contracts with private companies (UNESCO, 2023). A provider that publishes the full cost per learner, including data, devices and facilitation, and the share of learners reached on sponsored terms, makes it possible for funders to compare access models on a common basis. Few do so, and the evidence on the cost per completing learner in Kenya is, to the authors' knowledge, sparse.",
         ],
       },
       {
@@ -133,7 +133,7 @@ export const s2 = [
           "Angrist et al. (2022); Aker et al. (2012); A4AI (2021)",
         ],
       ],
-      note: "P2 to P6 are untested in Kenya for adult and workforce learning to the author's knowledge.",
+      note: "P2 to P6 are untested in Kenya for adult and workforce learning to the authors' knowledge.",
     },
   },
 ];

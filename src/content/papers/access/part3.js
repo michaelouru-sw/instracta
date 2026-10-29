@@ -62,7 +62,7 @@ export const s3 = [
       {
         h: "10.1 Purpose and caution",
         p: [
-          "To test whether the framework can be applied, this section applies it to the provider with which the author is associated. The exercise is reflexive, and it carries the risk of self-congratulation. It is therefore limited to stating, for each requirement, what the provider has in place, what it does not, and what evidence is currently available. It is not an evaluation and does not claim that the provider's programmes improve learning, which is the subject of the second paper in this series.",
+          "To test whether the framework can be applied, this section applies it to the provider with which the first author is associated. The exercise is reflexive, and it carries the risk of self-congratulation. It is therefore limited to stating, for each requirement, what the provider has in place, what it does not, and what evidence is currently available. It is not an evaluation and does not claim that the provider's programmes improve learning, which is the subject of the second paper in this series.",
         ],
       },
       {
@@ -157,7 +157,7 @@ export const back = [
     subs: [
       {
         h: "Declaration of competing interest",
-        p: ["The author is the founder of Instracta eLearning Solutions, whose products and initiatives are discussed in Sections 9 and 10. No other competing interests are declared."],
+        p: ["The first author is the founder of Instracta eLearning Solutions, whose products and initiatives are discussed in Sections 9 and 10. No other competing interests are declared."],
       },
       {
         h: "Funding",
@@ -165,11 +165,11 @@ export const back = [
       },
       {
         h: "Declaration of generative AI use",
-        p: ["Drafting of this working paper used generative AI assistance (Claude, Anthropic) for literature searching, structuring and drafting. Bibliographic details were checked against publisher or repository records. The author reviewed the text and is responsible for its content."],
+        p: ["Drafting of this working paper used generative AI assistance (Claude, Anthropic) for literature searching, structuring and drafting. Bibliographic details were checked against publisher or repository records. The authors reviewed the text and are responsible for its content."],
       },
       {
         h: "Author contributions (CRediT)",
-        p: ["Opiyo Michael Ouru: Conceptualization, Methodology, Investigation, Writing: original draft, Writing: review and editing."],
+        p: ["Opiyo Michael Ouru: Conceptualization, Methodology, Investigation, Writing: original draft, Writing: review and editing.", "Kenneth Goga Riany: Writing: review and editing.", "Daisy Chepkoech O'maera: Writing: review and editing."],
       },
       {
         h: "Data availability",

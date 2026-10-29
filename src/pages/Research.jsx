@@ -23,7 +23,7 @@ export default function Research() {
                 <Link to={`/research/${p.slug}`} className="hover:underline">{p.title}</Link>
               </h2>
               <p className="mt-2 text-lg text-gray-600">{p.subtitle}</p>
-              <p className="mt-3 text-sm text-gray-500">{p.authors.join(", ")} · {p.date}</p>
+              <p className="mt-3 text-sm text-gray-500">{p.authors.join(", ")} · {p.date}{p.doi ? ` · doi:${p.doi}` : ""}</p>
               <p className="mt-4 text-gray-600 leading-relaxed line-clamp-5">{p.abstract}</p>
               <div className="mt-5 flex flex-wrap gap-3">
                 <Link to={`/research/${p.slug}`} className="inline-flex items-center px-5 py-2.5 rounded-full text-sm font-medium bg-[#1A2B4A] text-white hover:bg-[#23385C]">Read paper</Link>
@@ -34,7 +34,7 @@ export default function Research() {
         ))}
       </div>
       <p className="mt-14 text-sm text-gray-500 max-w-2xl leading-relaxed">
-        These are working papers prepared by Instracta and have not been peer reviewed. They are narrative reviews of published sources, not original studies. We are an interested party, which each paper states. If you find an error or know of evidence we have missed, please tell us through the <Link to="/contact" className="underline">Contact</Link> page.
+        These are working papers. They are narrative reviews of published sources, not original studies. We are an interested party, which each paper states. If you find an error or know of evidence we have missed, please tell us through the <Link to="/contact" className="underline">Contact</Link> page.
       </p>
     </Page>
   );

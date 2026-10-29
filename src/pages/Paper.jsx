@@ -3,8 +3,8 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import PaperBody from "@/components/site/PaperBody";
 import { bySlug, papers } from "@/content/papers";
 
-function setMeta(name, content) {
-  let el = document.head.querySelector(`meta[name="${name}"]`);
+function setMeta(name, content, multi = false) {
+  let el = multi ? null : document.head.querySelector(`meta[name="${name}"]`);
   if (!el) {
     el = document.createElement("meta");
     el.setAttribute("name", name);
@@ -22,7 +22,8 @@ export function useScholarMeta(p) {
     const els = [
       setMeta("description", p.abstract.slice(0, 280) + "…"),
       setMeta("citation_title", `${p.title}: ${p.subtitle}`),
-      setMeta("citation_author", p.authors[0]),
+      ...p.authorRecords.map((a) => setMeta("citation_author", a.name, true)),
+      p.doi ? setMeta("citation_doi", p.doi) : null,
       setMeta("citation_publication_date", "2026/10"),
       setMeta("citation_publisher", "Instracta eLearning Solutions"),
       setMeta("citation_technical_report_institution", "Instracta eLearning Solutions"),
@@ -35,7 +36,8 @@ export function useScholarMeta(p) {
       "@type": "ScholarlyArticle",
       headline: p.title,
       alternativeHeadline: p.subtitle,
-      author: { "@type": "Person", name: p.authors[0] },
+      author: p.authorRecords.map((a) => ({ "@type": "Person", name: a.name, email: a.email, sameAs: `https://orcid.org/${a.orcid}` })),
+      ...(p.doi ? { identifier: `https://doi.org/${p.doi}`, sameAs: `https://doi.org/${p.doi}` } : {}),
       publisher: { "@type": "Organization", name: "Instracta eLearning Solutions" },
       datePublished: "2026-10",
       abstract: p.abstract,

@@ -38,7 +38,7 @@ export const s3 = [
         ["P5", "Gains measured on the same programme will be larger in the first pilot than at scale.", "Banerjee et al. (2017); Vivalt (2020)"],
         ["P6", "Providers with an independent evaluator who holds the data and commits to publish will report a smaller share of positive findings than providers without.", "Franco et al. (2014); Nosek et al. (2015); UNESCO (2023)"],
       ],
-      note: "P1 to P6 are untested for Kenyan training providers to the author's knowledge. P6 would require a sample of providers and cooperation from funders.",
+      note: "P1 to P6 are untested for Kenyan training providers to the authors' knowledge. P6 would require a sample of providers and cooperation from funders.",
     },
   },
   {
@@ -47,7 +47,7 @@ export const s3 = [
       {
         h: "9.1 Purpose and caution",
         p: [
-          "This section applies the framework to the provider with which the author is associated. The exercise is reflexive, and its limits are those of any self-assessment by an interested party. It is therefore confined to stating the provider's rung, its commitments and the evidence it has not yet produced. It does not claim that the provider's programmes improve learning.",
+          "This section applies the framework to the provider with which the first author is associated. The exercise is reflexive, and its limits are those of any self-assessment by an interested party. It is therefore confined to stating the provider's rung, its commitments and the evidence it has not yet produced. It does not claim that the provider's programmes improve learning.",
         ],
       },
       {
@@ -143,10 +143,10 @@ export const back = [
   {
     h: "Declarations",
     subs: [
-      { h: "Declaration of competing interest", p: ["The author is the founder of Instracta eLearning Solutions, whose programmes are discussed in Section 9. No other competing interests are declared."] },
+      { h: "Declaration of competing interest", p: ["The first author is the founder of Instracta eLearning Solutions, whose programmes are discussed in Section 9. No other competing interests are declared."] },
       { h: "Funding", p: ["No external funding was received for the preparation of this working paper."] },
-      { h: "Declaration of generative AI use", p: ["Drafting of this working paper used generative AI assistance (Claude, Anthropic) for literature searching, structuring and drafting. Bibliographic details were checked against publisher or repository records. The author reviewed the text and is responsible for its content."] },
-      { h: "Author contributions (CRediT)", p: ["Opiyo Michael Ouru: Conceptualization, Methodology, Investigation, Writing: original draft, Writing: review and editing."] },
+      { h: "Declaration of generative AI use", p: ["Drafting of this working paper used generative AI assistance (Claude, Anthropic) for literature searching, structuring and drafting. Bibliographic details were checked against publisher or repository records. The authors reviewed the text and are responsible for its content."] },
+      { h: "Author contributions (CRediT)", p: ["Opiyo Michael Ouru: Conceptualization, Methodology, Investigation, Writing: original draft, Writing: review and editing.", "Kenneth Goga Riany: Writing: review and editing.", "Daisy Chepkoech O'maera: Writing: review and editing."] },
       { h: "Data availability", p: ["No new data were generated. All sources are listed in the reference list; the search strings used are given in Appendix A."] },
     ],
   },

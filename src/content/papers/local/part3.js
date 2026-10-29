@@ -41,7 +41,7 @@ export const s3 = [
         ["P5", "Open-source projects with funded maintenance will show lower rates of abandonment than those without.", "Layer 3. Eghbal (2016); UNESCO (2019)"],
         ["P6", "Programmes with an independent local evaluator and a published results policy will report more null and negative findings than programmes without.", "Layer 3. UNESCO (2023); Section 7 of the second paper"],
       ],
-      note: "P1 to P6 are untested for Kenyan providers to the author's knowledge.",
+      note: "P1 to P6 are untested for Kenyan providers to the authors' knowledge.",
     },
   },
   {
@@ -50,7 +50,7 @@ export const s3 = [
       {
         h: "10.1 Purpose and caution",
         p: [
-          "This section applies the five tests to the provider with which the author is associated. The exercise is reflexive and carries the risk of self-congratulation. It is therefore limited to stating what the provider has in place, what it does not, and what it has committed to. It is not an evaluation.",
+          "This section applies the five tests to the provider with which the first author is associated. The exercise is reflexive and carries the risk of self-congratulation. It is therefore limited to stating what the provider has in place, what it does not, and what it has committed to. It is not an evaluation.",
         ],
       },
       {
@@ -166,10 +166,10 @@ export const back = [
   {
     h: "Declarations",
     subs: [
-      { h: "Declaration of competing interest", p: ["The author is the founder of Instracta eLearning Solutions, whose products and partnerships are discussed in Section 10. No other competing interests are declared."] },
+      { h: "Declaration of competing interest", p: ["The first author is the founder of Instracta eLearning Solutions, whose products and partnerships are discussed in Section 10. No other competing interests are declared."] },
       { h: "Funding", p: ["No external funding was received for the preparation of this working paper."] },
-      { h: "Declaration of generative AI use", p: ["Drafting of this working paper used generative AI assistance (Claude, Anthropic) for literature searching, structuring and drafting. Bibliographic details were checked against publisher or repository records. The author reviewed the text and is responsible for its content."] },
-      { h: "Author contributions (CRediT)", p: ["Opiyo Michael Ouru: Conceptualization, Methodology, Investigation, Writing: original draft, Writing: review and editing."] },
+      { h: "Declaration of generative AI use", p: ["Drafting of this working paper used generative AI assistance (Claude, Anthropic) for literature searching, structuring and drafting. Bibliographic details were checked against publisher or repository records. The authors reviewed the text and are responsible for its content."] },
+      { h: "Author contributions (CRediT)", p: ["Opiyo Michael Ouru: Conceptualization, Methodology, Investigation, Writing: original draft, Writing: review and editing.", "Kenneth Goga Riany: Writing: review and editing.", "Daisy Chepkoech O'maera: Writing: review and editing."] },
       { h: "Data availability", p: ["No new data were generated. All sources are listed in the reference list; the search strings used are given in Appendix A."] },
     ],
   },

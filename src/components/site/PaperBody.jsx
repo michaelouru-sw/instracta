@@ -91,13 +91,35 @@ export default function PaperBody({ p, print = false }) {
         </div>
         <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-[#1A2B4A] leading-tight">{p.title}</h1>
         <p className="mt-3 text-xl text-gray-600 leading-snug">{p.subtitle}</p>
-        <p className="mt-5 text-sm text-gray-700">
-          <span className="font-semibold">{p.authors.join(", ")}</span>
-          <br />
-          {p.affiliation}
-          <br />
-          {p.date} · {p.status}
-        </p>
+        <div className="mt-5 text-sm text-gray-700">
+          <p className="font-semibold">
+            {p.authorRecords.map((a, i) => (
+              <span key={a.name}>
+                {i > 0 && ", "}
+                {a.name}
+                <sup>{i + 1}{a.corresponding ? "*" : ""}</sup>
+              </span>
+            ))}
+          </p>
+          <ol className="mt-2 space-y-0.5 text-xs text-gray-600">
+            {p.authorRecords.map((a, i) => (
+              <li key={a.name}>
+                <sup>{i + 1}</sup> {a.affiliations.join("; ")} · {a.email} ·{" "}
+                <a href={`https://orcid.org/${a.orcid}`} className="underline">ORCID {a.orcid}</a>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-1 text-xs text-gray-600">* Corresponding author: {p.authorRecords.find((a) => a.corresponding).email}</p>
+          <p className="mt-3">
+            {p.date} · {p.status}
+            {p.doi && (
+              <>
+                {" · "}
+                <a href={`https://doi.org/${p.doi}`} className="underline">https://doi.org/{p.doi}</a>
+              </>
+            )}
+          </p>
+        </div>
       </header>
 
       {p.highlights && (
@@ -159,7 +181,7 @@ export default function PaperBody({ p, print = false }) {
       <section className="mt-12 p-5 border border-gray-200 rounded text-sm text-gray-700 leading-relaxed">
         <div className="font-semibold text-[#1A2B4A]">How to cite</div>
         <p className="mt-2">{citeAs(p)}</p>
-        <p className="mt-3 text-gray-500">Approximately {Math.floor(wc / 100) * 100} words, excluding references and appendix. This is a working paper and has not been peer reviewed. Comments and corrections are welcome through the Contact page.</p>
+        <p className="mt-3 text-gray-500">Approximately {Math.floor(wc / 100) * 100} words, excluding references and appendix. This is a working paper. Comments and corrections are welcome through the Contact page.</p>
       </section>
     </article>
   );
