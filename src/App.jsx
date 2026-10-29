@@ -10,6 +10,9 @@ import Initiatives from '@/pages/Initiatives'
 import Products from '@/pages/Products'
 import Work from '@/pages/Work'
 import Funders from '@/pages/Funders'
+import Research from '@/pages/Research'
+import Paper from '@/pages/Paper'
+import PaperPrint from '@/pages/PaperPrint'
 import Contact from '@/pages/Contact'
 import Login from '@/pages/Login'
 import Signup from '@/pages/Signup'
@@ -39,6 +42,9 @@ function App() {
             <Route path="/products" element={<MarketingPage><Products /></MarketingPage>} />
             <Route path="/work" element={<MarketingPage><Work /></MarketingPage>} />
             <Route path="/funders" element={<MarketingPage><Funders /></MarketingPage>} />
+            <Route path="/research" element={<MarketingPage><Research /></MarketingPage>} />
+            <Route path="/research/:slug" element={<MarketingPage><Paper /></MarketingPage>} />
+            <Route path="/research/:slug/print" element={<PaperPrint />} />
             <Route path="/contact" element={<MarketingPage><Contact /></MarketingPage>} />
 
             <Route path="/login" element={<Login />} />

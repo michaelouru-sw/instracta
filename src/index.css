@@ -67,3 +67,13 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Research papers: print edition */
+.paper-print { font-family: Inter, system-ui, sans-serif; color: #1f2937; }
+.paper-print .print-cover { display:flex; align-items:center; justify-content:space-between; border-bottom:3px solid #1A2B4A; padding-bottom:12px; margin-bottom:28px; }
+.paper-print .print-cover-kicker { font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:#1A2B4A; font-weight:600; }
+.paper-print .paper-section { break-inside: auto; }
+.paper-print h2 { break-after: avoid; }
+.paper-print figure, .paper-print .paper-table tr { break-inside: avoid; }
+.paper-print p { font-size: 10.5pt; line-height: 1.6; }
+.paper-print li { font-size: 10pt; }

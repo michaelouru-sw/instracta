@@ -25,6 +25,7 @@ export default function Layout({ children }) {
     { label: "Initiatives", href: "/initiatives" },
     { label: "Products", href: "/products" },
     { label: "Work with us", href: "/work" },
+    { label: "Research", href: "/research" },
     { label: "For funders", href: "/funders" },
     { label: "Pricing", href: "/pricing" },
   ];
@@ -240,7 +241,7 @@ export default function Layout({ children }) {
             <div>
               <h4 className="text-xs uppercase tracking-[0.2em] text-white/40 font-semibold mb-4">Explore</h4>
               <ul className="space-y-2.5 text-sm">
-                {[["What we stand for", "/stand"], ["Initiatives", "/initiatives"], ["Products", "/products"], ["Work with us", "/work"], ["For funders", "/funders"], ["Contact", "/contact"]].map(([l, h]) => (
+                {[["What we stand for", "/stand"], ["Initiatives", "/initiatives"], ["Products", "/products"], ["Work with us", "/work"], ["Research", "/research"], ["For funders", "/funders"], ["Contact", "/contact"]].map(([l, h]) => (
                   <li key={h}><Link to={h} className="text-white/75 hover:text-white">{l}</Link></li>
                 ))}
               </ul>
