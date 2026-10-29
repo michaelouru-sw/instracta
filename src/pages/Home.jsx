@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { Page, Btn } from "@/components/site/parts";
-import Leadership from "@/components/site/Leadership";
 
 const DOORS = [
   ["What we stand for", "Access, evidence, local ownership", "The three commitments behind our work.", "/stand"],
@@ -47,7 +46,6 @@ export default function Home() {
           </Link>
         ))}
       </div>
-      <Leadership />
       <p className="mt-14 text-sm text-gray-500">Past clients include Oxfam Novib, UNICEF, UNESCO, ILO and KCA University.</p>
     </Page>
   );

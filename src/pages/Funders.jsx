@@ -66,11 +66,7 @@ export default function Funders() {
       ]} />
       <H>People</H>
       <KV rows={[
-        ["Founder and CEO", "Michael Ouru, Nairobi. Learning engineer and LMS lead."],
-        ["Adviser and board lead", "Dr. Kenneth Goga Riany"],
-        ["Programme lead, Reach", "Daisy Chepkoech"],
         ["Advisory board", "A Kenyan advisory board will be appointed before the pilot."],
-        ["Independent evaluator", <span key="ev" className="inline-flex items-center gap-3"><img src="/team/natalie-wanga.jpg" alt="Natalie Wanga" width="48" height="48" className="w-12 h-12 rounded-full object-cover" /><span>Natalie Wanga</span></span>],
       ]} />
       <H>Documents</H>
       <div className="mt-4 overflow-x-auto">

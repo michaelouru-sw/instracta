@@ -48,7 +48,7 @@ export const s1 = [
       {
         h: "1.3 Contribution and structure",
         p: [
-          "This paper proposes a proportionate evidence standard for small providers. It makes three contributions. First, it integrates the four levels of training evaluation with the tiers of evidence used in United States education law into a four-rung evidence ladder that ties each level of measurement to the claims it can support. Second, it tests the logic that the ladder implies, that programmes should teach to the learner's level, support teachers and be measured, against experimental evidence from Kenya, Sub-Saharan Africa and elsewhere. Third, it specifies a minimum reporting standard, six testable propositions, and a reflexive assessment of the provider with which the first author is associated.",
+          "This paper proposes a proportionate evidence standard for small providers. It makes three contributions. First, it integrates the four levels of training evaluation with the tiers of evidence used in United States education law into a four-rung evidence ladder that ties each level of measurement to the claims it can support. Second, it tests the logic that the ladder implies, that programmes should teach to the learner's level, support teachers and be measured, against experimental evidence from Kenya, Sub-Saharan Africa and elsewhere. Third, it specifies a minimum reporting standard, six testable propositions, and a reflexive assessment of the provider with which an author is associated.",
           "Section 2 describes the method. Section 3 develops the theoretical foundations and the framework. Section 4 reviews what experimental evidence says works. Section 5 considers how a small provider can measure what changes. Section 6 treats threats to validity and integrity. Section 7 sets out the reporting standard. Section 8 states propositions. Section 9 applies the framework to Instracta. Sections 10 to 12 discuss implications, limitations and conclusions.",
         ],
       },
@@ -73,7 +73,7 @@ export const s1 = [
       {
         h: "2.3 Positionality",
         p: [
-          "The first author is a practitioner who founded a Kenyan learning provider and who leads a learning management service at a university. Practitioner experience informed the choice of questions and the pragmatism of the standard proposed. It also creates an interest in the conclusions, declared in the closing statements. The paper states its claims in a form that can be checked against sources and presents counter-evidence where it exists.",
+          "An author is a practitioner who founded a Kenyan learning provider and who leads a learning management service at a university. Practitioner experience informed the choice of questions and the pragmatism of the standard proposed. It also creates an interest in the conclusions, declared in the closing statements. The paper states its claims in a form that can be checked against sources and presents counter-evidence where it exists.",
         ],
       },
     ],

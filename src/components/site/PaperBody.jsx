@@ -91,35 +91,15 @@ export default function PaperBody({ p, print = false }) {
         </div>
         <h1 className="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-[#1A2B4A] leading-tight">{p.title}</h1>
         <p className="mt-3 text-xl text-gray-600 leading-snug">{p.subtitle}</p>
-        <div className="mt-5 text-sm text-gray-700">
-          <p className="font-semibold">
-            {p.authorRecords.map((a, i) => (
-              <span key={a.name}>
-                {i > 0 && ", "}
-                {a.name}
-                <sup>{i + 1}{a.corresponding ? "*" : ""}</sup>
-              </span>
-            ))}
-          </p>
-          <ol className="mt-2 space-y-0.5 text-xs text-gray-600">
-            {p.authorRecords.map((a, i) => (
-              <li key={a.name}>
-                <sup>{i + 1}</sup> {a.affiliations.join("; ")} · {a.email} ·{" "}
-                <a href={`https://orcid.org/${a.orcid}`} className="underline">ORCID {a.orcid}</a>
-              </li>
-            ))}
-          </ol>
-          <p className="mt-1 text-xs text-gray-600">* Corresponding author: {p.authorRecords.find((a) => a.corresponding).email}</p>
-          <p className="mt-3">
-            {p.date} · {p.status}
-            {p.doi && (
-              <>
-                {" · "}
-                <a href={`https://doi.org/${p.doi}`} className="underline">https://doi.org/{p.doi}</a>
-              </>
-            )}
-          </p>
-        </div>
+        <p className="mt-5 text-sm text-gray-700">
+          {p.date} · {p.status}
+          {p.doi && (
+            <>
+              {" · "}
+              <a href={`https://doi.org/${p.doi}`} className="underline">https://doi.org/{p.doi}</a>
+            </>
+          )}
+        </p>
       </header>
 
       {p.highlights && (

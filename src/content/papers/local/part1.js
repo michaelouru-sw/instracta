@@ -50,7 +50,7 @@ export const s1 = [
         h: "1.3 Contribution and structure",
         p: [
           "This paper makes three contributions. First, it distinguishes three layers of localisation, language and content, pedagogy, and institutions, and argues that effectiveness and sustainability depend more on the second and third than on the first. Second, it reviews evidence for each layer from Kenya, Sub-Saharan Africa and the wider literature, and derives five tests of local substance and six propositions. Third, it applies the tests reflexively to a Kenyan provider.",
-          "Section 2 describes the method. Section 3 develops the theoretical foundations and the layered framework. Sections 4 to 6 review the evidence at each layer. Section 7 reviews the policy frameworks that make the case for local provision. Section 8 proposes the five tests, Section 9 the propositions, and Section 10 applies the tests to Instracta. Sections 11 to 13 discuss implications, limitations and conclusions. The first author is the founder of the provider discussed in Section 10 and has an interest in the conclusions, which the closing statements declare.",
+          "Section 2 describes the method. Section 3 develops the theoretical foundations and the layered framework. Sections 4 to 6 review the evidence at each layer. Section 7 reviews the policy frameworks that make the case for local provision. Section 8 proposes the five tests, Section 9 the propositions, and Section 10 applies the tests to Instracta. Sections 11 to 13 discuss implications, limitations and conclusions. An author is the founder of the provider discussed in Section 10 and has an interest in the conclusions, which the closing statements declare.",
         ],
       },
     ],
@@ -74,7 +74,7 @@ export const s1 = [
       {
         h: "2.3 Positionality",
         p: [
-          "The first author is a Kenyan practitioner: an instructional designer, learning management system lead at a Kenyan university and founder of a Kenyan provider. Local knowledge informed the questions asked and the practical tests proposed. The first author's interest in local provision is declared, and the paper includes an explicit statement of the risks and limits of the position (Section 12).",
+          "An author is a Kenyan practitioner: an instructional designer, learning management system lead at a Kenyan university and founder of a Kenyan provider. Local knowledge informed the questions asked and the practical tests proposed. The authors' interest in local provision is declared, and the paper includes an explicit statement of the risks and limits of the position (Section 12).",
         ],
       },
     ],

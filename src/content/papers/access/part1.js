@@ -50,7 +50,7 @@ export const s1 = [
         h: "1.3 Contribution and structure",
         p: [
           "This paper makes three contributions. First, it proposes a conditions-of-access framework with four gates, connect, afford, use and learn, that can be applied to any digital learning programme and that locates where a particular learner is lost. Second, it reviews the evidence for Kenya and Sub-Saharan Africa gate by gate and derives seven design requirements and six testable propositions. Third, it applies the framework reflexively to a Kenyan provider, stating honestly where that provider meets the requirements and where it does not.",
-          "The paper proceeds as follows. Section 2 describes the review method and its limits. Section 3 develops the theoretical foundations and the framework. Sections 4 to 7 review the evidence on connection and affordability, on use, on learning, and on the funding of access. Section 8 states the propositions. Section 9 derives design requirements. Section 10 applies the framework to Instracta. Section 11 discusses implications for policy, practice, funders and research. Section 12 sets out limitations, and Section 13 concludes. The first author is the founder of the provider discussed in Section 10; this interest is declared in the closing statements and the reader should weigh the argument accordingly.",
+          "The paper proceeds as follows. Section 2 describes the review method and its limits. Section 3 develops the theoretical foundations and the framework. Sections 4 to 7 review the evidence on connection and affordability, on use, on learning, and on the funding of access. Section 8 states the propositions. Section 9 derives design requirements. Section 10 applies the framework to Instracta. Section 11 discusses implications for policy, practice, funders and research. Section 12 sets out limitations, and Section 13 concludes. An author is the founder of the provider discussed in Section 10; this interest is declared in the closing statements and the reader should weigh the argument accordingly.",
         ],
       },
     ],
@@ -80,7 +80,7 @@ export const s1 = [
       {
         h: "2.4 Positionality",
         p: [
-          "The first author is a practitioner: an instructional designer, learning management system lead and founder of a Kenyan learning provider. Practitioner knowledge informed the choice of questions and the design requirements. It also creates an interest in the conclusions. The paper therefore states its claims in a form that can be checked against sources and presents counter-evidence where it exists.",
+          "An author is a practitioner: an instructional designer, learning management system lead and founder of a Kenyan learning provider. Practitioner knowledge informed the choice of questions and the design requirements. It also creates an interest in the conclusions. The paper therefore states its claims in a form that can be checked against sources and presents counter-evidence where it exists.",
         ],
       },
     ],

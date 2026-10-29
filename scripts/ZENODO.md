@@ -6,5 +6,4 @@
 4. `ZENODO_TOKEN=... node scripts/zenodo.mjs publish` uploads the PDFs and publishes. Publishing is permanent.
 
 Rehearse first with `ZENODO_SANDBOX=1` and a token from sandbox.zenodo.org.
-Metadata: type working paper, licence CC BY 4.0 (change in `scripts/zenodo.mjs` if you prefer another), three creators with ORCID.
-Confirm with Dr Riany and Daisy before step 4: their names and ORCIDs become public.
+Metadata: type working paper, licence CC BY 4.0 (change in `scripts/zenodo.mjs` if you prefer another), creator: Instracta eLearning Solutions.

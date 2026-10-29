@@ -40,11 +40,7 @@ const metadata = (p) => ({
   upload_type: "publication",
   publication_type: "workingpaper",
   title: `${p.title}: ${p.subtitle}`,
-  creators: p.authorRecords.map((a) => ({
-    name: `${a.family}, ${a.given}`,
-    affiliation: a.affiliations[0],
-    orcid: a.orcid,
-  })),
+  creators: [{ name: "Instracta eLearning Solutions" }],
   description: `<p>${p.abstract}</p><p>${p.series}. Working paper.</p>`,
   keywords: p.keywords,
   publication_date: "2026-10-29",

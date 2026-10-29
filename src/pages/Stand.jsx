@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Page, PageHead, Three } from "@/components/site/parts";
-import Leadership from "@/components/site/Leadership";
 
 export default function Stand() {
   return (
@@ -16,7 +15,6 @@ export default function Stand() {
           <Link key={s} to={`/research/${s}`} className="text-[#1F5B6B] font-medium hover:underline">{l} →</Link>
         ))}
       </div>
-      <Leadership />
     </Page>
   );
 }
